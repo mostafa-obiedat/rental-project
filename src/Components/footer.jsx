@@ -13,7 +13,7 @@ const Footer = () => {
                         <p className="py-8 text-sm text-gray-300 lg:max-w-xs text-center lg:text-left">
                             Experience luxury in nature. Your perfect mountain getaway awaits at Rivana Chalets.
                         </p>
-                        <Link to="/booking" className="py-2.5 px-5 h-9 block w-fit bg-[#D6EFD8] text-[#1A5319] rounded-full shadow-sm text-xs mx-auto transition-all duration-500 hover:bg-white lg:mx-0 font-medium">
+                        <Link to="/property" className="py-2.5 px-5 h-9 block w-fit bg-[#D6EFD8] text-[#1A5319] rounded-full shadow-sm text-xs mx-auto transition-all duration-500 hover:bg-white lg:mx-0 font-medium">
                             Book Now
                         </Link>
                     </div>
@@ -23,7 +23,7 @@ const Footer = () => {
                         <h4 className="text-lg font-medium mb-7">Explore</h4>
                         <ul className="text-sm transition-all duration-500">
                             <li className="mb-6"><Link to="/" className="text-[#D6EFD8] hover:text-white transition-colors">Home</Link></li>
-                            <li className="mb-6"><Link to="/chalets" className="text-[#D6EFD8] hover:text-white transition-colors">Our Chalets</Link></li>
+                            <li className="mb-6"><Link to="/property" className="text-[#D6EFD8] hover:text-white transition-colors">Our Chalets</Link></li>
                             <li className="mb-6"><Link to="/amenities" className="text-[#D6EFD8] hover:text-white transition-colors">Amenities</Link></li>
                             <li><Link to="/location" className="text-[#D6EFD8] hover:text-white transition-colors">Location</Link></li>
                         </ul>

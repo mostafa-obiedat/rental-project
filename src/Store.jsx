@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import wishlistReducer from "./Redux/wishlistSlice"; // Reducer الخاص بالـ Wishlist
+import wishlistReducer from "./Redux/wishlistSlice"; 
 import authReducer from "./Redux/authSlice";
 import propertiesReducer from "./Redux/propertySlice";
 import bookingsReducer from "./Redux/bookingsSlice";
@@ -11,8 +11,8 @@ import creditCardReducer from './Redux/creditCardSlice';
 
 const store = configureStore({
   reducer: {
-    wishlist: wishlistReducer, // Reducer الخاص بالـ Wishlist
-    auth: authReducer,  // إضافة authReducer هنا
+    wishlist: wishlistReducer, 
+    auth: authReducer,  
     properties: propertiesReducer,
     bookings: bookingsReducer,
     analytics: analyticsReducer,

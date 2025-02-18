@@ -24,25 +24,26 @@ function MapViue() {
   const mapRef = useRef(null); // لاستخدام الـ ref لتخزين الخريطة
 
   const locations = [
-    { id: 1, name: "Al-Qudis - soccer field", position: [32.0784409, 36.072574] },
-    { id: 2, name: "Petra soccer field", position: [32.08336976603278, 36.081933847826285] },
-    { id: 3, name: "Bolywood soccer field", position: [32.110474812696, 36.090716838817514] },
-    { id: 4, name: "Municipal Stadium", position: [32.054181432072866, 36.08836619659992] },
-    { id: 5, name: "Golden Ball Stadium Penta", position: [32.04704880147237, 36.09512434593029] },
-    { id: 6, name: "Aljmzawey courts", position: [32.068184029167426, 36.074773142959764] },
-    { id: 7, name: "Khatab Court", position: [32.083348319095606, 36.08748916334725] },
-    { id: 8, name: "Seher Alshouq", position: [32.08847753364245, 36.113675371048494] },
-    { id: 9, name: "Tarawneh Stadium", position: [32.09444815587646, 36.07893494685292] },
+    { id: 1, name: "Mountain Flower Farm and Chalet", position: [32.126552, 35.991287] },
+    { id: 2, name: "Azraq Lodge", position: [32.111568, 35.982770] },
+    { id: 3, name: "Golden Inn", position: [32.093654, 35.960539] },
+    { id: 4, name: "Petra Rose Farm", position: [32.110437, 35.908479] },
+    { id: 5, name: "RR Inn", position: [32.115831, 36.060163] },
+    { id: 6, name: "Alsharif Luxury Holiday Villa", position: [32.011442, 36.087067] },
+    { id: 7, name: "Round Trips Home", position: [32.069322, 35.973395] },
+    { id: 8, name: "Beautiful Chalet in Zarqa", position: [32.074774, 36.277093] },
+    { id: 9, name: "Mazra'a and Swimming Pools Chalets", position: [32.146025, 36.164808] },
+    { id: 10, name: "Shaleh Jamil in Zarqa", position: [31.935819, 36.199375] },
   ];
 
   return (
     <>
       <h2
-        className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-6"
+        className="text-2xl md:text-3xl font-bold text-green-600 text-center mb-6"
         data-aos="fade-up"
         data-aos-duration="1000"
       >
-        Find Stadiums Near You
+        Find Farms Near You
       </h2>
 
       <div
@@ -52,7 +53,7 @@ function MapViue() {
         data-aos-delay="200"
       >
         <MapContainer
-          center={[32.07275, 36.08796]} // Centered on Amman
+          center={[32.058747, 36.085075]} // Centered on Zarqa
           zoom={12} // Adjust zoom level to show all markers
           style={{ height: "100%", width: "100%" }}
           ref={mapRef} // ربط الخريطة باستخدام ref

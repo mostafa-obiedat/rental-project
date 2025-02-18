@@ -38,7 +38,7 @@ export const signInUser = createAsyncThunk(
         const snapshot = await get(userRef);
   
         if (!snapshot.exists()) {
-          throw new Error("لم يتم العثور على بيانات المستخدم في قاعدة البيانات.");
+          throw new Error("Invalid email or password");
         }
   
         const userData = { 

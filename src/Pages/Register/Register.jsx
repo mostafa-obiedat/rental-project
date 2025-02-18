@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpUser, signInUser, signInWithGoogle, resetStatus } from "../../Redux/authSlice";
-import { FaGoogle, FaExclamationCircle, FaEnvelope, FaLock, FaUser, FaPhone  } from "react-icons/fa";
+import { FaGoogle, FaExclamationCircle, FaEnvelope, FaLock, FaUser, FaPhone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,9 +25,7 @@ const Register = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        style: { width: "150%", top: "30px", right: "380px" },
       });
-
       setTimeout(() => {
         navigate("/");
         dispatch(resetStatus());
@@ -45,15 +43,12 @@ const Register = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        style: { width: "150%", top: "30px", right: "380px" },
       });
-  
       setTimeout(() => {
-        // توجيه المستخدم بناءً على الدور
         if (user?.isAdmin) {
-          navigate("/admin"); // توجيه الأدمن إلى صفحة الأدمن
+          navigate("/admin");
         } else {
-          navigate("/"); // توجيه المستخدم العادي إلى الصفحة الرئيسية
+          navigate("/");
         }
         dispatch(resetStatus());
       }, 2000);
@@ -65,11 +60,11 @@ const Register = () => {
     setTimeout(() => {
       setIsSignUp(!isSignUp);
       if (isSignUp) {
-        setErrorsSignUp({}); // إعادة تعيين أخطاء التسجيل
+        setErrorsSignUp({});
       } else {
-        setErrorsSignIn({}); // إعادة تعيين أخطاء تسجيل الدخول
+        setErrorsSignIn({});
       }
-      dispatch(resetStatus()); // إعادة تعيين حالة الخطأ العام
+      dispatch(resetStatus());
       setIsAnimating(false);
     }, 400);
   };
@@ -191,7 +186,17 @@ const Register = () => {
 
   return (
     <div className="min-h-screen w-full flex overflow-hidden bg-gray-50">
-      <ToastContainer />
+      {/* Toast Container مع تعديل الموقع */}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        toastClassName="md:w-auto w-full"
+      />
+
       <div className="flex-1 flex items-center justify-center p-8">
         <div
           className={`w-full max-w-md transform transition-all duration-500 ease-in-out ${
@@ -217,18 +222,32 @@ const Register = () => {
               setErrorsSignIn={setErrorsSignIn}
             />
           )}
+
+          {/* زر التبديل بين الفورمات (يظهر فقط في الأجهزة المتوسطة والصغيرة) */}
+          <div className="mt-6 text-center block md:hidden">
+            <p className="text-gray-600">
+              {isSignUp ? "Already have an account?" : "Don't have an account?"}
+            </p>
+            <button
+              onClick={handleToggleForm}
+              className="mt-2 text-[#1A5319] font-semibold hover:underline focus:outline-none"
+            >
+              {isSignUp ? "Sign In" : "Sign Up"}
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="flex-1 relative overflow-hidden">
+      {/* إخفاء الصورة في الأجهزة المتوسطة والصغيرة */}
+      <div className="flex-1 relative overflow-hidden hidden md:block">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/4ce5aa143408545.627a3e505b0a4.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            height: "100vh", // تأكد من أن الارتفاع كافٍ
-            width: "100%",   // تأكد من أن العرض كافٍ
+            height: "100vh",
+            width: "100%",
           }}
         >
           <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
@@ -255,6 +274,7 @@ const Register = () => {
   );
 };
 
+// ... (باقي الكود)
 const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, setErrorsSignUp }) => (
   <div className="bg-white p-8 rounded-2xl shadow-xl">
     <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">Create Account</h2>
@@ -274,7 +294,7 @@ const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, s
           icon={<FaUser className="text-gray-400" />}
           error={errors.firstname}
           setErrors={setErrorsSignUp}
-          showIcon={false} // إخفاء الأيقونة في SignupForm
+          showIcon={false}
         />
         <InputField
           name="lastname"
@@ -283,7 +303,7 @@ const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, s
           icon={<FaUser className="text-gray-400" />}
           error={errors.lastname}
           setErrors={setErrorsSignUp}
-          showIcon={false} // إخفاء الأيقونة في SignupForm
+          showIcon={false}
         />
       </div>
 
@@ -294,7 +314,7 @@ const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, s
         icon={<FaEnvelope className="text-gray-400" />}
         error={errors.email}
         setErrors={setErrorsSignUp}
-        showIcon={false} // إخفاء الأيقونة في SignupForm
+        showIcon={false}
       />
 
       <InputField
@@ -304,7 +324,7 @@ const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, s
         icon={<FaLock className="text-gray-400" />}
         error={errors.password}
         setErrors={setErrorsSignUp}
-        showIcon={false} // إخفاء الأيقونة في SignupForm
+        showIcon={false}
       />
 
       <InputField
@@ -314,7 +334,7 @@ const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, s
         icon={<FaPhone className="text-gray-400" />}
         error={errors.phoneNumber}
         setErrors={setErrorsSignUp}
-        showIcon={false} // إخفاء الأيقونة في SignupForm
+        showIcon={false}
       />
 
       <button
@@ -346,6 +366,7 @@ const SignupForm = ({ handleSubmit, handleGoogleSignUp, error, status, errors, s
     </form>
   </div>
 );
+
 const SigninForm = ({ handleSubmit, handleGoogleSignIn, error, status, errors, setErrorsSignIn }) => (
   <div className="bg-white p-8 rounded-2xl shadow-xl">
     <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">Welcome Back</h2>
@@ -364,7 +385,7 @@ const SigninForm = ({ handleSubmit, handleGoogleSignIn, error, status, errors, s
         icon={<FaEnvelope className="text-gray-400" />}
         error={errors.email}
         setErrors={setErrorsSignIn}
-        showIcon={true} // إظهار الأيقونة في SigninForm
+        showIcon={true}
       />
 
       <InputField
@@ -374,7 +395,7 @@ const SigninForm = ({ handleSubmit, handleGoogleSignIn, error, status, errors, s
         icon={<FaLock className="text-gray-400" />}
         error={errors.password}
         setErrors={setErrorsSignIn}
-        showIcon={true} // إظهار الأيقونة في SigninForm
+        showIcon={true}
       />
 
       <button
@@ -430,12 +451,12 @@ const InputField = ({ name, type, placeholder, icon, error, setErrors, className
       </div>
       {error && (
         <div className="flex items-center gap-2 text-red-500 text-sm pl-4">
-          {showIcon && <FaExclamationCircle />} {/* عرض الأيقونة فقط إذا كانت showIcon = true */}
+          {showIcon && <FaExclamationCircle />}
           <span>{error}</span>
         </div>
       )}
     </div>
   );
-
 };
+
 export default Register;
